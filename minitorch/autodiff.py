@@ -25,14 +25,14 @@ def central_difference(f: Any, *vals: Any, arg: int = 0, epsilon: float = 1e-6) 
     # TODO: Implement for Task 1.1.
 
     vals_forward = list(vals)
+    vals_backward = list(vals)
     vals_forward[arg] += epsilon
+    vals_backward[arg] -= epsilon
 
-
-    f_original = f(*vals)
     f_forward = f(*vals_forward)
+    f_backward = f(*vals_backward)
 
-
-    derivative = (f_forward - f_original) / epsilon
+    derivative = (f_forward - f_backward) / (2 * epsilon)
     
     return derivative
 
