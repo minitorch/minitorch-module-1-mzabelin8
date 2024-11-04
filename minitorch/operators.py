@@ -71,7 +71,7 @@ def relu(x: float) -> float:
 def log(x: float) -> float:
     if x <= 0:
         raise ValueError("log(x) is undefined for x <= 0.")
-    return math.log(x)
+    return math.log(x + 1e-6)
 
 def exp(x: float) -> float:
     return math.exp(x)
@@ -79,7 +79,7 @@ def exp(x: float) -> float:
 def log_back(x: float, d: float) -> float:
     if x <= 0:
         raise ValueError("log_back(x) is undefined for x <= 0.")
-    return d / x
+    return d * inv(x)
 
 def inv(x: float) -> float:
     if x == 0:
@@ -89,10 +89,10 @@ def inv(x: float) -> float:
 def inv_back(x: float, d: float) -> float:
     if x == 0:
         raise ValueError("inv_back(x) is undefined for x == 0.")
-    return -d / (x ** 2)
+    return -1.0 * d * inv(x) * inv(x)
 
 def relu_back(x: float, d: float) -> float:
-    return d if x > 0 else 0.0
+    return 1.0 * d if x > 0 else 0.0
 
 
 # ## Task 0.3
