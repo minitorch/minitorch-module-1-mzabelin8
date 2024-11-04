@@ -174,7 +174,13 @@ class Scalar:
         assert h.ctx is not None
 
         # TODO: Implement for Task 1.3.
-        raise NotImplementedError("Need to implement for Task 1.3")
+        local_gradients = h.last_fn.backward(h.ctx, d_output)
+
+        for input_var, local_grad in zip(h.inputs, local_gradients):
+            if not input_var.is_constant():
+                yield input_var, local_grad
+
+
 
     def backward(self, d_output: Optional[float] = None) -> None:
         """
