@@ -45,13 +45,13 @@ def add(x: float, y: float) -> float:
     return x + y
 
 def neg(x: float) -> float:
-    return -x
+    return -x * 1.0
 
 def lt(x: float, y: float) -> float:
-    return x < y
+    return 1.0 if x < y else 0.0
 
 def eq(x: float, y: float) -> float:
-    return x == y
+    return 1.0 if x == y else 0.0
 
 def max(x: float, y: float) -> float:
     return x if x > y else y
