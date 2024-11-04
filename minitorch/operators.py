@@ -47,10 +47,10 @@ def add(x: float, y: float) -> float:
 def neg(x: float) -> float:
     return -x
 
-def lt(x: float, y: float) -> bool:
+def lt(x: float, y: float) -> float:
     return x < y
 
-def eq(x: float, y: float) -> bool:
+def eq(x: float, y: float) -> float:
     return x == y
 
 def max(x: float, y: float) -> float:
