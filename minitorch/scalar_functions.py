@@ -79,7 +79,7 @@ class Add(ScalarFunction):
 
     @staticmethod
     def backward(ctx: Context, d_output: float) -> Tuple[float, ...]:
-        return d_output, d_output
+        return (d_output, d_output)
 
 
 class Log(ScalarFunction):
@@ -112,7 +112,7 @@ class Mul(ScalarFunction):
     def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         # TODO: Implement for Task 1.4.
         a, b = ctx.saved_values
-        return d_output * b, d_output * a
+        return (d_output * b, d_output * a)
 
 
 class Inv(ScalarFunction):
@@ -209,7 +209,7 @@ class LT(ScalarFunction):
     @staticmethod
     def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         # TODO: Implement for Task 1.4.
-        return 0.0
+        return (0.0, 0.0)
 
 
 class EQ(ScalarFunction):

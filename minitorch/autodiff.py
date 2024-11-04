@@ -106,7 +106,7 @@ def backpropagate(variable: Variable, deriv: Any) -> None:
     """
     # TODO: Implement for Task 1.4.
     sorted_nodes = topological_sort(variable)
-    gradients = {variable.unique_id, deriv}
+    gradients = {variable.unique_id: deriv}
 
     for v in sorted_nodes:
         d_output = gradients.get(v.unique_id, 0)

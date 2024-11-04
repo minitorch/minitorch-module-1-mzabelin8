@@ -18,9 +18,12 @@ from .scalar_functions import (
     ReLU,
     ScalarFunction,
     Sigmoid,
+    wrap_tuple
 )
 
 ScalarLike = Union[float, int, "Scalar"]
+
+
 
 
 @dataclass
@@ -174,7 +177,7 @@ class Scalar:
         assert h.ctx is not None
 
         # TODO: Implement for Task 1.3.
-        local_gradients = h.last_fn.backward(h.ctx, d_output)
+        local_gradients = wrap_tuple(h.last_fn.backward(h.ctx, d_output))
 
         for input_var, local_grad in zip(h.inputs, local_gradients):
             if not input_var.is_constant():
